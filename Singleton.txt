@@ -1,0 +1,51 @@
+//Normal SingleTon
+class SingleObject{
+private static SingleObject instance = new SingleObject();
+private SingleObject(){}
+public static SingleObject getInstance(){
+return instance;
+}
+public void showMessage(){
+System.out.println("Hello World!");
+}
+}
+public class SingletonPatternDemo{
+public static void main(String[] args){
+SingleObject object=SingleObject.getInstance();
+object.showMessage();
+}
+}
+
+//SingleTon with Thread
+
+//final class:The final keyword in java is used to restrict the user, similarly, 
+//the final class means that the class cannot be extended.
+//this code is example of lazy initialization 
+final class Singleton{
+private static Singleton instance;
+public String value;
+private Singleton(String value){
+//the following code emulates slow initialization
+try{
+Thread.sleep(1000);
+}
+catch(Exception e)
+{}
+this.value=value;
+}
+public static Singleton getInstance(String value){
+if (instance==null){
+instance = new Singleton(value);
+}
+return instance;
+}
+}
+public class DemoSingleThread{
+public static void main(String[] args){
+System.out.println("If you see the same value, then Singleton was reused"+"\n"+"If you see different values,then 2 singletons was created"+"\n\n"+"RESULTS:"+"\n");
+Singleton singleton=Singleton.getInstance("Yeah got it!!");
+Singleton anotherSingleton=Singleton.getInstance("Something went wrong");
+System.out.println(singleton.value);
+System.out.println(anotherSingleton.value);
+}
+}

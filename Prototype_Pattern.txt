@@ -1,0 +1,77 @@
+//Prototype Pattern
+//class EmployeeRecord
+public class EmployeeRecord{
+    private int id;
+    private String name,designation;
+    private double salary;
+    private String address;
+
+    public EmployeeRecord(){
+    System.out.println("Employee Record of Oracle Coorporation");
+    System.out.println("----------------------------------------------");
+    System.out.println("Eid "+"\t "+"Ename "+"\t"+"Edesignation "+"\t"+"Esalary"+"\t"+"Eaddress");
+    }
+
+    public EmployeeRecord(int id,String name,String designation,double salary,String address){
+        this();
+        this.id=id;
+        this.name=name;
+        this.designation=designation;
+        this.salary=salary;
+        this.address=address;
+
+    }
+    public void showRecord(){
+        System.out.println(id+"\t"+name+"\t"+designation+"\t"+salary+"\t"+address);
+    }
+
+  //  @Override
+    public EmployeeRecord getClone(){
+        return new EmployeeRecord(id,name,designation,salary,address);
+    }
+}
+
+//interface Prototype
+public interface Prototype{
+    public Prototype getClone();
+    
+}
+
+//class ProtoTypePatternDemo
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public  class PrototypePatternDemo{
+    public static void main(String[] args)throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter your employee id: ");
+        int eid=Integer.parseInt(br.readLine());
+        System.out.println("\n");
+
+        System.out.println("Enter your name");
+        String ename=br.readLine();
+        System.out.println("\n");
+
+        System.out.println("Enter Your Designation");
+        String edesignation=br.readLine();
+        System.out.println("\n");
+
+        System.out.println("Enter you salary");
+        double esalary=Double.parseDouble(br.readLine());
+        System.out.println("\n");
+
+        System.out.println("Enter yor address");
+        String eaddress = br.readLine();
+        System.out.println("\n");
+
+       
+
+        EmployeeRecord e1 = new EmployeeRecord(eid, ename, edesignation, esalary, eaddress);
+        e1.showRecord();
+        System.out.println("\n");
+        EmployeeRecord e2 = e1.getClone();
+        e2.showRecord();
+
+    }
+}
