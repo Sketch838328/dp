@@ -13,6 +13,6 @@ This command will download the file to the specified location with the specified
 
 Example: To download the file "1b.py" and save it as "new.py", the command would be:
 
-curl https://raw.githubusercontent.com/apk-93/daa/main/1a.py -o new.py
+curl https://raw.githubusercontent.com/apk-93/daa/main/file.text -o new.text
 
 Note: The above example is provided for demonstration purposes and may not be applicable to your use case.
